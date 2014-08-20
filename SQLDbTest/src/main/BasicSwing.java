@@ -39,7 +39,7 @@ public class BasicSwing extends JFrame {
     private JButton send, exit;
     private JPanel panel1 = new JPanel(), panel2 = new JPanel(), contentPanel = new JPanel();
     private CardLayout cardLayout = new CardLayout();
-    private JLabel header, maxtime, ingreds, name, preptime, ingredients, instructions, leftpicp2, leftpicp1;
+    private JLabel header, maxtime, ingreds, name, preptime, ingredients, instructions, leftpicp2, leftpicp1, mainlogo;
     private JTextField jtime;
     private JTextPane jt, outputinstructs, outputingreds;
 
@@ -49,16 +49,18 @@ public class BasicSwing extends JFrame {
         super("Reseptigeneraattori");
         db = sqldb;
         ImageIcon image = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
-
+        ImageIcon imagemain = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
         //initalize components for panel1            
              
-        leftpicp1 = new JLabel(image, JLabel.CENTER);        
+        leftpicp1 = new JLabel(image, JLabel.CENTER);    
+        mainlogo = new JLabel(imagemain, JLabel.CENTER);
         header = new JLabel("Vegit - The Amazing Generator");
-        maxtime = new JLabel("Maxtime");
-        ingreds = new JLabel("Ainekset");
+        maxtime = new JLabel("Valmistusaika (min)");
+        ingreds = new JLabel("Ainekset (0-5)");
         send = new JButton("Hae!");
         jt = new JTextPane();
         jtime = new JTextField();
+         
 
         //initialize components for panel2
         leftpicp2 = new JLabel(image, JLabel.CENTER);
@@ -72,13 +74,14 @@ public class BasicSwing extends JFrame {
         exit = new JButton("Exit");
 
         //set sizes for components in panel1
+        mainlogo.setBounds(240, 40, 200, 50); 
         leftpicp1.setBounds(0, 0, 45, 768);  
-        header.setBounds(300, 30, 200, 20);
-        maxtime.setBounds(200, 100, 80, 20);
-        jt.setBounds(350, 150, 100, 100);
-        ingreds.setBounds(200, 150, 80, 20);
-        jtime.setBounds(350, 100, 80, 20);
-        send.setBounds(360, 270, 80, 50);
+//        header.setBounds(300, 30, 200, 20);
+        maxtime.setBounds(140, 120, 125, 20);
+        jt.setBounds(290, 170, 100, 100);
+        ingreds.setBounds(140, 170, 80, 20);
+        jtime.setBounds(290, 120, 80, 20);
+        send.setBounds(300, 290, 80, 50);
 
         //set sizes for components in panel2
         leftpicp2.setBounds(0, 0, 45, 768);  
@@ -103,7 +106,9 @@ public class BasicSwing extends JFrame {
 
         //add components to panel1
         panel1.add(leftpicp1);
-        panel1.add(header);
+        panel1.add(mainlogo);
+//        panel1.add(header);
+        
         panel1.add(jt);
         panel1.add(jtime);
         panel1.add(maxtime);

@@ -85,11 +85,12 @@ public class BasicSwing extends JFrame {
         name.setBounds(225, 50, 120, 40);
         preptime.setBounds(150, 100, 150, 30);
         ingredients.setBounds(150, 150, 100, 10);        
-        instructions.setBounds(150, 430, 100, 20);
-        outputinstructs.setBounds(150, 450, 300, 250);
-        outputinstructs.setBackground(Color.YELLOW);
-        outputingreds.setBounds(150, 200, 200, 100);
-        outputingreds.setBackground(Color.YELLOW);
+        instructions.setBounds(150, 350, 100, 20);
+        outputingreds.setBounds(150, 180, 200, 140);
+        outputingreds.setBackground(Color.white);
+        outputinstructs.setBounds(150, 390, 300, 250);
+        outputinstructs.setBackground(Color.white);
+        
 
         //set background colors and images
         panel1.setBackground(Color.red);
@@ -176,7 +177,7 @@ public class BasicSwing extends JFrame {
                 name.setText("" + tiedot.get(1) + "");
                 System.out.println("Nimi: " + tiedot.get(1));
                 
-                preptime.setText("Valmistusaika: " + tiedot.get(0) + "");
+                preptime.setText("Valmistusaika: " + tiedot.get(0) + " min");
                 System.out.println("Valmistusaika: " + tiedot.get(0) + " min");
                 
                 
@@ -188,11 +189,13 @@ public class BasicSwing extends JFrame {
                 }
                 outputingreds.setText(ainekset);
                 
-                System.out.println(tiedot.get(3));
-                String[] instructionarray = parseOutputInstructions(tiedot.get(3));                
+                System.out.println("Valmistusohjeet: \n" + tiedot.get(3));
+                String[] instructionarray = parseOutputInstructions(tiedot.get(3));                 
                 String ohje = "";                
                 for (String ins : instructionarray){
-                    ohje += (ins + "\n");
+                    if (ins.length() > 0) {
+                        ohje += (ins + "\n");
+                    }                    
                 }
                 outputinstructs.setText(ohje);
                 

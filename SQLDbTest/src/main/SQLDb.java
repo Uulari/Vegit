@@ -5,7 +5,6 @@ package main;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,18 +20,20 @@ public class SQLDb {
     int time;
     ArrayList<String> tiedot;
     ArrayList<String> ingredients;
+    private boolean vege;
 
     public SQLDb() {
         this.hakusyote = "";
         this.time = 0;
         tiedot = new ArrayList();
         ingredients = new ArrayList();
+        this.vege = false;
     }
 
     public void run() throws InstantiationException, IllegalAccessException, SQLException {
         String players;
 
-        int medals;
+        
         String url = "jdbc:mysql://localhost:3306/";
         String dbName = "reseptit";
         String driver = "com.mysql.jdbc.Driver";
@@ -46,7 +47,7 @@ public class SQLDb {
             // make a query, request & display results   
             parseIngredients();
             parseTime();
-            
+
             Statement st = conn.createStatement();
             String sql = ("SELECT ID FROM recipes WHERE " + this.hakusyote + " time <= " + this.time);
 
@@ -99,7 +100,6 @@ public class SQLDb {
 //        this.keyword = keyword;
 //
 //    }
-
     public void timeInMins(int minutes) {
         this.time = minutes;
 
@@ -119,22 +119,25 @@ public class SQLDb {
         for (int i = 0; i < this.ingredients.size(); i++) {
             if (ingredients.size() == 0) {
                 hakusyote = "";
-            }
-            else if (ingredients.size() >= 1){
-            
-            hakusyote += ("ingredients LIKE '%" + this.ingredients.get(i) + "%' AND ");
+            } else if (ingredients.size() >= 1) {
+
+                hakusyote += ("ingredients LIKE '%" + this.ingredients.get(i) + "%' AND ");
             }
         }
 
     }
-    
+
     public void parseTime() {
         if (this.time == 0 || this.time < 0) {
             this.time = 1000;
         } else {
             this.time = this.time;
         }
-       
+
+    }
+    
+    public void parseVege() {
+    
     }
 
 }

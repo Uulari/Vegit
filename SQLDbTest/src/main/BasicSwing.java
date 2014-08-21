@@ -39,8 +39,8 @@ public class BasicSwing extends JFrame {
     private JButton send, exit;
     private JPanel panel1 = new JPanel(), panel2 = new JPanel(), contentPanel = new JPanel();
     private CardLayout cardLayout = new CardLayout();
-    private JLabel header, maxtime, ingreds, name, preptime, ingredients, instructions, leftpicp2, leftpicp1, mainlogo;
-    private JTextField jtime;
+    private JLabel header, maxtime, ingreds, people, name, preptime, ingredients, instructions, leftpicp2, leftpicp1, mainlogo, vege;
+    private JTextField jtime, amountofppl, vegebole;
     private JTextPane jt, outputinstructs, outputingreds;
 
     public BasicSwing(SQLDb sqldb) throws IOException {
@@ -50,19 +50,25 @@ public class BasicSwing extends JFrame {
         db = sqldb;
         ImageIcon image = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
         ImageIcon imagemain = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+       
         //initalize components for panel1            
              
         leftpicp1 = new JLabel(image, JLabel.CENTER);    
         mainlogo = new JLabel(imagemain, JLabel.CENTER);
+        people = new JLabel("Henkilömäärä");
+        vege = new JLabel("Kasvisresepti?");
         header = new JLabel("Vegit - The Amazing Generator");
         maxtime = new JLabel("Valmistusaika (min)");
         ingreds = new JLabel("Ainekset (0-5)");
         send = new JButton("Hae!");
         jt = new JTextPane();
         jtime = new JTextField();
+        vegebole = new JTextField();
+        amountofppl = new JTextField();
          
 
         //initialize components for panel2
+        
         leftpicp2 = new JLabel(image, JLabel.CENTER);
         name = new JLabel("Nimi", SwingConstants.CENTER);
         preptime = new JLabel("Valmistusaika");
@@ -77,11 +83,16 @@ public class BasicSwing extends JFrame {
         mainlogo.setBounds(240, 40, 200, 50); 
         leftpicp1.setBounds(0, 0, 45, 768);  
 //        header.setBounds(300, 30, 200, 20);
+        
         maxtime.setBounds(140, 120, 125, 20);
         jt.setBounds(290, 170, 100, 100);
         ingreds.setBounds(140, 170, 80, 20);
-        jtime.setBounds(290, 120, 80, 20);
-        send.setBounds(300, 290, 80, 50);
+        people.setBounds(140, 300, 125, 20);
+        jtime.setBounds(290, 120, 100, 20);
+        amountofppl.setBounds(290, 300, 100, 20);
+        vege.setBounds(140, 350, 100, 20);
+        vegebole.setBounds(290, 350, 100, 20);
+        send.setBounds(300, 420, 80, 50);
 
         //set sizes for components in panel2
         leftpicp2.setBounds(0, 0, 45, 768);  
@@ -108,10 +119,13 @@ public class BasicSwing extends JFrame {
         panel1.add(leftpicp1);
         panel1.add(mainlogo);
 //        panel1.add(header);
-        
+        panel1.add(vege);
+        panel1.add(vegebole);
+        panel1.add(amountofppl);
         panel1.add(jt);
         panel1.add(jtime);
         panel1.add(maxtime);
+        panel1.add(people);
         panel1.add(ingreds);
         panel1.add(send);
         panel1.setLayout(null);
@@ -168,8 +182,11 @@ public class BasicSwing extends JFrame {
             ingred.add(ingreds[i]);
         }
         int strtime = Integer.parseInt(jtime.getText());
+        String isvege = vegebole.getText();
+        vegebole.setText("");
         jt.setText("");
         jtime.setText("");
+        
         System.out.println("Resepti:");
 
         db.timeInMins(strtime);

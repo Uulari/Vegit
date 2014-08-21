@@ -39,7 +39,7 @@ public class BasicSwing extends JFrame {
     private JButton send, exit;
     private JPanel panel1 = new JPanel(), panel2 = new JPanel(), contentPanel = new JPanel();
     private CardLayout cardLayout = new CardLayout();
-    private JLabel header, maxtime, ingreds, people, name, preptime, ingredients, instructions, leftpicp2, leftpicp1, mainlogo, vege;
+    private JLabel header, maxtime, ingreds, people, name, preptime, ingredients, instructions, leftpicp2, leftpicp1, mainlogo, mainlogop2, vege;
     private JTextField jtime, amountofppl, vegebole;
     private JTextPane jt, outputinstructs, outputingreds;
 
@@ -70,12 +70,13 @@ public class BasicSwing extends JFrame {
         //initialize components for panel2
         
         leftpicp2 = new JLabel(image, JLabel.CENTER);
-        name = new JLabel("Nimi", SwingConstants.CENTER);
+        
         preptime = new JLabel("Valmistusaika");
         ingredients = new JLabel("Ainekset:");
         instructions = new JLabel("Valmistusohjeet: ");
         outputinstructs = new JTextPane();
         outputingreds = new JTextPane();
+        mainlogop2 = new JLabel(imagemain, JLabel.CENTER);
         
         exit = new JButton("Exit");
 
@@ -95,8 +96,10 @@ public class BasicSwing extends JFrame {
         send.setBounds(300, 420, 80, 50);
 
         //set sizes for components in panel2
+        mainlogop2.setBounds(240, 40, 200, 50); 
         leftpicp2.setBounds(0, 0, 45, 768);  
-        name.setBounds(225, 50, 120, 40);
+        
+        
         preptime.setBounds(150, 100, 150, 30);
         ingredients.setBounds(150, 150, 100, 10);        
         instructions.setBounds(150, 350, 100, 20);
@@ -131,8 +134,8 @@ public class BasicSwing extends JFrame {
         panel1.setLayout(null);
 
         //add components to panel2
-        panel2.add(leftpicp2);
-        panel2.add(name);
+        panel2.add(mainlogop2);
+        panel2.add(leftpicp2);        
         panel2.add(preptime);
         panel2.add(ingredients);
         panel2.add(instructions);

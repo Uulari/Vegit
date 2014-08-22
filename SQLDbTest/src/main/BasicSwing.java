@@ -3,6 +3,7 @@ package main;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import static java.awt.Color.red;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -36,7 +39,7 @@ import javax.swing.SwingConstants;
 public class BasicSwing extends JFrame {
 
     SQLDb db;
-    private JButton send, exit;
+    private JButton send, exit, back;
     private JPanel panel1 = new JPanel(), panel2 = new JPanel(), contentPanel = new JPanel();
     private CardLayout cardLayout = new CardLayout();
     private JLabel header, maxtime, ingreds, people, name, preptime, ingredients, instructions, leftpicp2, leftpicp1, mainlogo, mainlogop2, vege;
@@ -47,9 +50,10 @@ public class BasicSwing extends JFrame {
 
         //initalize sqldb object        
         super("Reseptigeneraattori");
+        
         db = sqldb;
-        ImageIcon image = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
-        ImageIcon imagemain = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+        ImageIcon image = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
+        ImageIcon imagemain = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
        
         //initalize components for panel1            
              
@@ -76,15 +80,22 @@ public class BasicSwing extends JFrame {
         instructions = new JLabel("Valmistusohjeet: ");
         outputinstructs = new JTextPane();
         outputingreds = new JTextPane();
-        mainlogop2 = new JLabel(imagemain, JLabel.CENTER);
-        
+        mainlogop2 = new JLabel(imagemain, JLabel.CENTER);        
         exit = new JButton("Exit");
-
+        back = new JButton("back to search");
+        
+         //set borders for components in panel2          
+        leftpicp1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        
+        jtime.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        jt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        vegebole.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        amountofppl.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        send.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        
         //set sizes for components in panel1
         mainlogo.setBounds(240, 40, 200, 50); 
-        leftpicp1.setBounds(0, 0, 45, 768);  
-//        header.setBounds(300, 30, 200, 20);
-        
+        leftpicp1.setBounds(0, 0, 45, 768);       
         maxtime.setBounds(140, 120, 125, 20);
         jt.setBounds(290, 170, 100, 100);
         ingreds.setBounds(140, 170, 80, 20);
@@ -95,11 +106,16 @@ public class BasicSwing extends JFrame {
         vegebole.setBounds(290, 350, 100, 20);
         send.setBounds(300, 420, 80, 50);
 
-        //set sizes for components in panel2
+        //set borders for components in panel2          
+        leftpicp2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        outputingreds.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        outputinstructs.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        
+        
+        
+        //set sizes for components in panel 2
         mainlogop2.setBounds(240, 40, 200, 50); 
-        leftpicp2.setBounds(0, 0, 45, 768);  
-        
-        
+        leftpicp2.setBounds(0, 0, 45, 768);
         preptime.setBounds(150, 100, 150, 30);
         ingredients.setBounds(150, 150, 100, 10);        
         instructions.setBounds(150, 350, 100, 20);
@@ -107,16 +123,14 @@ public class BasicSwing extends JFrame {
         outputingreds.setBackground(Color.white);
         outputinstructs.setBounds(150, 390, 300, 250);
         outputinstructs.setBackground(Color.white);
+        exit.setBounds(200, 670, 60, 40);
+        back.setBounds(290, 670, 120, 40);
         
 
         //set background colors and images
         panel1.setBackground(Color.red);
         panel2.setBackground(Color.yellow);
-        
-        
-        
-        
-
+            
 
         //add components to panel1
         panel1.add(leftpicp1);
@@ -135,6 +149,7 @@ public class BasicSwing extends JFrame {
 
         //add components to panel2
         panel2.add(mainlogop2);
+        
         panel2.add(leftpicp2);        
         panel2.add(preptime);
         panel2.add(ingredients);
@@ -144,6 +159,7 @@ public class BasicSwing extends JFrame {
         panel2.setLayout(null);
 
         panel2.add(exit);
+        panel2.add(back);
 
         contentPanel.setLayout(cardLayout);
         
@@ -157,7 +173,9 @@ public class BasicSwing extends JFrame {
         actionListener al = new actionListener();
 
         exit.addActionListener(al);
-        send.addActionListener(al);
+        send.addActionListener(al);        
+        back.addActionListener(al);
+       
 
     }
 
@@ -170,7 +188,8 @@ public class BasicSwing extends JFrame {
                 runQuery();
             } else if (src.equals(exit)) {
                 System.exit(0);
-
+            } else if (src.equals(back)) {                
+                cardLayout.first(contentPanel);
             }
 
         }
@@ -245,4 +264,6 @@ public class BasicSwing extends JFrame {
         return osaset;
     
     }
+    
+   
 }

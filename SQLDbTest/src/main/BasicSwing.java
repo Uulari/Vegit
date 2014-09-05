@@ -74,7 +74,7 @@ public class BasicSwing extends JFrame {
         //initialize components for panel2
         
         leftpicp2 = new JLabel(image, JLabel.CENTER);
-        
+        name = new JLabel("yo");
         preptime = new JLabel("Valmistusaika");
         ingredients = new JLabel("Ainekset:");
         instructions = new JLabel("Valmistusohjeet: ");
@@ -116,12 +116,13 @@ public class BasicSwing extends JFrame {
         //set sizes for components in panel 2
         mainlogop2.setBounds(240, 40, 200, 50); 
         leftpicp2.setBounds(0, 0, 45, 768);
-        preptime.setBounds(150, 100, 150, 30);
-        ingredients.setBounds(150, 150, 100, 10);        
-        instructions.setBounds(150, 350, 100, 20);
-        outputingreds.setBounds(150, 180, 200, 140);
+        name.setBounds(150, 110, 150, 20);
+        preptime.setBounds(150, 135, 150, 30);
+        ingredients.setBounds(150, 175, 100, 10);        
+        instructions.setBounds(150, 355, 100, 20);
+        outputingreds.setBounds(150, 205, 200, 140);
         outputingreds.setBackground(Color.white);
-        outputinstructs.setBounds(150, 390, 300, 250);
+        outputinstructs.setBounds(150, 395, 300, 250);
         outputinstructs.setBackground(Color.white);
         exit.setBounds(200, 670, 60, 40);
         back.setBounds(290, 670, 120, 40);
@@ -149,6 +150,7 @@ public class BasicSwing extends JFrame {
 
         //add components to panel2
         panel2.add(mainlogop2);
+        panel2.add(name);
         
         panel2.add(leftpicp2);        
         panel2.add(preptime);
@@ -203,29 +205,34 @@ public class BasicSwing extends JFrame {
         for (int i = 0; i < ingreds.length; i++) {
             ingred.add(ingreds[i]);
         }
+        
         int strtime = Integer.parseInt(jtime.getText());
+        int peopleamount = Integer.parseInt(amountofppl.getText());
         String isvege = vegebole.getText();
         vegebole.setText("");
         jt.setText("");
         jtime.setText("");
+        amountofppl.setText("");
         
         System.out.println("Resepti:");
 
         db.timeInMins(strtime);
         db.haeAinekset(ingred);
+        db.setAmountOfPeople(peopleamount);
 
         try {
             db.run();
             ArrayList<String> tiedot = db.haeTiedot();
+            System.out.println(db.haeTiedot());
             if (tiedot.size() >= 0) {
                 name.setText("" + tiedot.get(1) + "");
-                System.out.println("Nimi: " + tiedot.get(1));
+//                System.out.println("Nimi: " + tiedot.get(1));
                 
                 preptime.setText("Valmistusaika: " + tiedot.get(0) + " min");
-                System.out.println("Valmistusaika: " + tiedot.get(0) + " min");
+//                System.out.println("Valmistusaika: " + tiedot.get(0) + " min");
                 
                 
-                System.out.println("Ainekset: " + tiedot.get(2));
+//                System.out.println("Ainekset: " + tiedot.get(2));
                 String[] ingredientarray = parseOutputIngredients(tiedot.get(2));
                 String ainekset = "";
                 for (String item : ingredientarray){
@@ -233,7 +240,7 @@ public class BasicSwing extends JFrame {
                 }
                 outputingreds.setText(ainekset);
                 
-                System.out.println("Valmistusohjeet: \n" + tiedot.get(3));
+//                System.out.println("Valmistusohjeet: \n" + tiedot.get(3));
                 String[] instructionarray = parseOutputInstructions(tiedot.get(3));                 
                 String ohje = "";                
                 for (String ins : instructionarray){

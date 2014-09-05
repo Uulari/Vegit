@@ -9,6 +9,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -17,6 +19,7 @@ import java.util.List;
 public class SQLDb {
 
     String hakusyote;
+    int amountofppl;
     int time;
     ArrayList<String> tiedot;
     ArrayList<String> ingredients;
@@ -25,20 +28,20 @@ public class SQLDb {
     public SQLDb() {
         this.hakusyote = "";
         this.time = 0;
-        tiedot = new ArrayList();
-        ingredients = new ArrayList();
+        this.amountofppl = 0;
+        this.tiedot = new ArrayList();
+        this.ingredients = new ArrayList();
         this.vege = false;
     }
 
     public void run() throws InstantiationException, IllegalAccessException, SQLException {
         String players;
 
-        
         String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "reseptit";
+        String dbName = "vegitdatabase";
         String driver = "com.mysql.jdbc.Driver";
-        String userName = "root";
-        String password = "Mozartinkuula99";
+        String userName = "Morpheus";
+        String password = "Bambiino16";
         try {
             //Initalize connection to db
             Class.forName(driver).newInstance();
@@ -46,7 +49,6 @@ public class SQLDb {
 
             // make a query, request & display results   
             parseIngredients();
-            parseTime();
 
             Statement st = conn.createStatement();
             String sql = ("SELECT ID FROM recipes WHERE " + this.hakusyote + " time <= " + this.time);
@@ -73,9 +75,10 @@ public class SQLDb {
                 String tarvikkeet = rs2.getString("ingredients");
                 String valmistusohjeet = rs2.getString("instructions");
 
+                
                 tiedot.add(Integer.toString(time));
                 tiedot.add(name);
-                tiedot.add(tarvikkeet);
+                tiedot.add(calculateIngredAmounts(tarvikkeet));
                 tiedot.add(valmistusohjeet);
 
 //               System.out.println("Nimi: " + name);
@@ -96,13 +99,19 @@ public class SQLDb {
 
     }
 
-//    public void keyword(String keyword) {
-//        this.keyword = keyword;
-//
-//    }
     public void timeInMins(int minutes) {
-        this.time = minutes;
+        if (minutes == 0 || minutes < 0) {
+            this.time = 1000;
+        } else {
+            this.time = minutes;
+        }
 
+    }
+
+    public void setAmountOfPeople(int amount) {
+        if (amount > 0) {
+            this.amountofppl = amount;
+        }
     }
 
     public ArrayList<String> haeTiedot() {
@@ -127,17 +136,27 @@ public class SQLDb {
 
     }
 
-    public void parseTime() {
-        if (this.time == 0 || this.time < 0) {
-            this.time = 1000;
-        } else {
-            this.time = this.time;
-        }
+    public String calculateIngredAmounts(String tarvikkeet) {
+        String returnString = "";
+        String[] ainekset = tarvikkeet.split(",");
+        for (String aines : ainekset) {
 
-    }
-    
-    public void parseVege() {
-    
+            String s = aines;
+            if (s.contains("g)")) {
+                s = s.substring(0, s.length() - 2);
+            }
+
+            String nums = "";
+            String ingredname = "";
+            nums = s.replaceAll("[^0-9]", "");
+            ingredname = s.replaceAll("[^a-zA-Z]", "");
+            int amount = Integer.parseInt(nums);
+            int result = amount * this.amountofppl;
+            String piece = "";
+            piece = (ingredname + " (" + result + " g),");
+            returnString += piece;
+        }
+        return returnString;
     }
 
 }

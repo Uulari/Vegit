@@ -26,6 +26,9 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
+import main.panels.CreateAccountPanel;
+import main.panels.FrontPanel;
+import main.panels.Panel6;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -74,28 +77,9 @@ public class BasicSwing extends JFrame {
         exit = new JButton("Exit");
         back = new JButton("back to search");
         
-        //initialize components for panel3
-        p3 = new JLabel("test3");
-        leftpicp3 = new JLabel(image, JLabel.CENTER);    
-        mainlogop3 = new JLabel(imagemain, JLabel.CENTER);
-        loginunp3 = new JLabel("Desired username");
-        loginpwp3 = new JLabel("Desired password");
-        newUsername = new JTextField();
-        newPassword = new JTextField();
-        createButton = new JButton("Create account");
-
         
-        //initialize components for panel4
-        leftpicp4 = new JLabel(image, JLabel.CENTER);    
-        mainlogop4 = new JLabel(imagemain, JLabel.CENTER);
-        loginun = new JLabel("Username");
-        loginpw = new JLabel("Password");
-        loginUsername = new JTextField();
-        loginPassword = new JTextField();
-        login = new JButton("Login");
-        createAccount = new JButton("Create account");
 
-        
+              
         
          //set borders for components in panel2          
         leftpicp1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -112,12 +96,10 @@ public class BasicSwing extends JFrame {
         outputingreds.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         outputinstructs.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         
-        //set borders for for components in panel3
-        leftpicp3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+       
 
         
-        //set borders for for components in panel4
-        leftpicp4.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        
 
         
         
@@ -141,28 +123,11 @@ public class BasicSwing extends JFrame {
         panel1.setBackground(Color.red);
         panel2.setBackground(Color.yellow);
         panel3.setBackground(Color.white);
-        panel4.setBackground(Color.CYAN);
-          
-        //set sizes for components in panel 3
-        p3.setBounds(200, 670, 60, 40);
-        mainlogop3.setBounds(235, 40, 200, 50);
-        leftpicp3.setBounds(0, 0, 45, 768);
-        loginunp3.setBounds(150, 150, 150, 20);
-        loginpwp3.setBounds(150, 200, 150, 20);
-        newUsername.setBounds(300, 150, 150, 20);
-        newPassword.setBounds(300, 200, 150, 20);
-        createButton.setBounds(225, 250, 150, 30);
+        
+        
 
         
-        //set sizes for components in panel 4
-        mainlogop4.setBounds(235, 40, 200, 50);
-        leftpicp4.setBounds(0, 0, 45, 768);
-        loginun.setBounds(180, 150, 100, 20);
-        loginpw.setBounds(180, 200, 100, 20);
-        loginUsername.setBounds(300, 150, 150, 20);
-        loginPassword.setBounds(300, 200, 150, 20);
-        login.setBounds(180, 250, 120, 30);
-        createAccount.setBounds(300, 250, 150, 30);
+        
 
         //add components to panel1
         panel1.add(leftpicp1);
@@ -195,43 +160,36 @@ public class BasicSwing extends JFrame {
         panel2.add(exit);
         panel2.add(back);
         
-        //add components to panel3
-        panel3.add(p3);
-        panel3.add(mainlogop3);
-        panel3.add(leftpicp3);
-        panel3.add(loginunp3);
-        panel3.add(loginpwp3);
-        panel3.add(newUsername);
-        panel3.add(newPassword);
-        panel3.add(createButton);
         
-        panel3.setLayout(null);
         
-        //add components to panel4
-        panel4.add(mainlogop4);
-        panel4.add(leftpicp4);
-        panel4.add(loginun);
-        panel4.add(loginpw);
-        panel4.add(loginUsername);
-        panel4.add(loginPassword);
-        panel4.add(login);
-        panel4.add(createAccount);
-        panel4.setLayout(null);
+        
        
         contentPanel.setLayout(cardLayout);
+        
+        FrontPanel frontpanel = new FrontPanel();        
+        frontpanel.initComponents();
+        CreateAccountPanel creationpanel = new CreateAccountPanel();
+        creationpanel.initComponents();
         
         contentPanel.add(panel1, "panel1");
         contentPanel.add(panel2, "panel2");
         contentPanel.add(panel3, "panel3");
         contentPanel.add(panel4, "panel4");
+        contentPanel.add(frontpanel.getPanel(), "frontpanel");
+        contentPanel.add(creationpanel.getPanel(), "creationpanel");
+        
         
 
         this.setContentPane(contentPanel);
 
-        cardLayout.show(contentPanel, "panel4");
+        cardLayout.show(contentPanel, "frontpanel");
 
         actionListener al = new actionListener();
-
+        
+        
+        this.login = frontpanel.getLogin();
+        this.createAccount = frontpanel.getCreateAccount();
+        this.createButton = creationpanel.getCreateButton();
         exit.addActionListener(al);
         send.addActionListener(al);        
         back.addActionListener(al);
@@ -278,10 +236,10 @@ public class BasicSwing extends JFrame {
             if (src.equals(send)) {
                 cardLayout.show(contentPanel, "panel2");
                 runQuery();
-            } else if (src.equals(login)) {
+            } else if (src.equals(login)) {               
                 cardLayout.show(contentPanel, "panel1");
             } else if (src.equals(createAccount)) {
-                cardLayout.show(contentPanel, "panel3");
+                cardLayout.show(contentPanel, "creationpanel");
             } else if (src.equals(back)) {                
                 cardLayout.first(contentPanel);
             } else if (src.equals(exit)) {

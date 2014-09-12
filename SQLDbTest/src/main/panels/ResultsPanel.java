@@ -8,6 +8,7 @@ package main.panels;
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,10 +31,13 @@ public class ResultsPanel extends Panel {
     @Override
     public void initComponents() {
         
-         //initialize components for panel2
+        ImageIcon sideimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
+        ImageIcon logoimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+         
+        //initialize components for panel2
         
-//        leftpicp2 = new JLabel(image, JLabel.CENTER);
-//        JLabel mainlogop2 = new JLabel(imagemain, JLabel.CENTER); 
+        JLabel sidepic = new JLabel(sideimage, JLabel.CENTER);
+        JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER); 
         
         JLabel preptime = new JLabel("Valmistusaika");
         JLabel ingredients = new JLabel("Ainekset:");
@@ -45,9 +49,9 @@ public class ResultsPanel extends Panel {
         back = new JButton("back to search");
         
         //set sizes for components in panel 2
-//        mainlogop2.setBounds(235, 40, 200, 50); 
-//        leftpicp2.setBounds(0, 0, 45, 768);
-      
+        
+        mainlogo.setBounds(235, 40, 200, 50); 
+        sidepic.setBounds(0, 0, 45, 768);      
         preptime.setBounds(150, 135, 150, 30);
         ingredients.setBounds(150, 175, 100, 10);        
         instructions.setBounds(150, 355, 100, 20);
@@ -59,13 +63,14 @@ public class ResultsPanel extends Panel {
         back.setBounds(290, 670, 120, 40);
         
          //set borders for components in panel2          
-//        leftpicp2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        sidepic.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         outputingreds.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         outputinstructs.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         
         //add components to panel2
-//        panel.add(mainlogop2);        
-//        panel.add(leftpicp2);   
+        
+        panel.add(mainlogo);        
+        panel.add(sidepic);   
         
         panel.add(preptime);
         panel.add(ingredients);

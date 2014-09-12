@@ -58,9 +58,7 @@ public class BasicSwing extends JFrame {
         super("Reseptigeneraattori");
         
         db = sqldb;
-        image = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
-        imagemain = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
-         
+                 
         contentPanel.setLayout(cardLayout);
         
         FrontPanel frontpanel = new FrontPanel();        

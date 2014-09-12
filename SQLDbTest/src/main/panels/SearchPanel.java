@@ -8,6 +8,7 @@ package main.panels;
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,9 +31,12 @@ public class SearchPanel extends Panel {
     @Override
     public void initComponents() {
        
+        ImageIcon sideimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
+        ImageIcon logoimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+        
          //initialize components for panel1
-//        leftpicp1 = new JLabel(image, JLabel.CENTER);    
-//        mainlogo = new JLabel(imagemain, JLabel.CENTER);
+        JLabel leftpic = new JLabel(sideimage, JLabel.CENTER);    
+        JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
         send = new JButton("Hae!");
         JLabel people = new JLabel("Henkilömäärä");
         JLabel  vege = new JLabel("Kasvisresepti?");        
@@ -45,8 +49,8 @@ public class SearchPanel extends Panel {
         JTextField amountofppl = new JTextField();  
         
         //set sizes for components in panel1
-//        mainlogo.setBounds(235, 40, 200, 50); 
-//        leftpicp1.setBounds(0, 0, 45, 768);       
+        mainlogo.setBounds(235, 40, 200, 50); 
+        leftpic.setBounds(0, 0, 45, 768);       
         maxtime.setBounds(140, 120, 125, 20);
         jt.setBounds(290, 170, 100, 100);
         ingreds.setBounds(140, 170, 80, 20);
@@ -58,6 +62,7 @@ public class SearchPanel extends Panel {
         this.send.setBounds(300, 420, 80, 50);
         
         //set borders
+        leftpic.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         jtime.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         jt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         vegebole.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -65,9 +70,8 @@ public class SearchPanel extends Panel {
         this.send.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         //add components to panel1
-//        panel.add(leftpicp1);
-//        panel.add(mainlogo);
-        
+        panel.add(leftpic);
+        panel.add(mainlogo);        
         
         panel.add(vege);
         panel.add(vegebole);

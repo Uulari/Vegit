@@ -7,10 +7,12 @@ package main.panels;
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 
 /**
  *
@@ -27,10 +29,14 @@ public class CreateAccountPanel extends Panel {
 
     @Override
     public void initComponents() {
-
+        
+        ImageIcon sideimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
+        ImageIcon logoimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+        
         //initialize components for panel3
-//        leftpicp3 = new JLabel(image, JLabel.CENTER);    
-//        mainlogop3 = new JLabel(imagemain, JLabel.CENTER);
+        
+        JLabel sidepic = new JLabel(sideimage, JLabel.CENTER);    
+        JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
         JLabel loginunp3 = new JLabel("Desired username");
         JLabel loginpwp3 = new JLabel("Desired password");
         JTextField newUsername = new JTextField();
@@ -38,8 +44,8 @@ public class CreateAccountPanel extends Panel {
         createButton = new JButton("Create account");
 
         //set sizes for components in panel 3
-//        mainlogop3.setBounds(235, 40, 200, 50);
-//        leftpicp3.setBounds(0, 0, 45, 768);
+        mainlogo.setBounds(235, 40, 200, 50);
+        sidepic.setBounds(0, 0, 45, 768);
         loginunp3.setBounds(150, 150, 150, 20);
         loginpwp3.setBounds(150, 200, 150, 20);
         newUsername.setBounds(300, 150, 150, 20);
@@ -47,11 +53,11 @@ public class CreateAccountPanel extends Panel {
         createButton.setBounds(225, 250, 150, 30);
         
          //set borders for for components in panel3
-//        leftpicp3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        sidepic.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 
         //add components to panel3
-//        panel.add(mainlogop3);
-//        panel.add(leftpicp3);
+        panel.add(mainlogo);
+        panel.add(sidepic);
         panel.add(loginunp3);
         panel.add(loginpwp3);
         panel.add(newUsername);

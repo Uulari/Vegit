@@ -35,7 +35,7 @@ public class SQLDb {
     }
 
     public void run() throws InstantiationException, IllegalAccessException, SQLException {
-        String players;
+        
 
         String url = "jdbc:mysql://localhost:3306/";
         String dbName = "vegitdatabase";
@@ -157,6 +157,37 @@ public class SQLDb {
             returnString += piece;
         }
         return returnString;
+    }
+    
+    public void createUser(String username, String password) {
+        
+        String url = "jdbc:mysql://localhost:3306/";
+        String dbName = "vegitdatabase";
+        String driver = "com.mysql.jdbc.Driver";
+        String userName = "Morpheus";
+        String password = "Bambiino16";
+        
+         Class.forName(driver).newInstance();
+         Connection conn = DriverManager.getConnection(url + dbName, userName, password);
+         
+            Statement st = conn.createStatement();
+            //check if db contains username
+            String sql = ("SELECT FROM users (username, password, email) WHERE username = " + username);                 
+            ResultSet rs1 = st.executeQuery(sql);
+            
+            // creates account with given username and pw            
+            if (rs1.wasNull() == true) {
+                String newUser = ("INSERT INTO users (Username, Password, Favourites) VALUES ('" + username +  "','" + password + "')");                 
+                ResultSet rs2 = st.executeQuery(newUser);
+                
+            }
+            
+        
+    }
+    
+    public boolean checkUser() {
+    
+    
     }
 
 }

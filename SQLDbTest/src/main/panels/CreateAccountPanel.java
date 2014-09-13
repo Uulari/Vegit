@@ -22,6 +22,8 @@ public class CreateAccountPanel extends Panel {
 
     private JPanel panel;
     private JButton createButton;
+    private JTextField newPassword, newUsername;
+    
 
     public CreateAccountPanel() {
         this.panel = new JPanel();
@@ -39,8 +41,8 @@ public class CreateAccountPanel extends Panel {
         JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
         JLabel loginunp3 = new JLabel("Desired username");
         JLabel loginpwp3 = new JLabel("Desired password");
-        JTextField newUsername = new JTextField();
-        JTextField newPassword = new JTextField();
+        newUsername = new JTextField();
+        newPassword = new JTextField();
         createButton = new JButton("Create account");
 
         //set sizes for components in panel 3
@@ -75,6 +77,20 @@ public class CreateAccountPanel extends Panel {
     
     public JButton getCreateButton() {
         return this.createButton;
+    }
+    
+    public boolean isValidPassword(String text) {
+        if (this.newPassword.getText().length() >= 6 && this.newPassword.getText().length() <= 25) {
+            return true;        
+        }
+        return false;
+    }
+    
+    public boolean isValidUsername(String text) {
+        if (this.newUsername.getText().length() >= 3 && this.newUsername.getText().length() <= 25) {
+            return true;        
+        }
+        return false;
     }
 
 }

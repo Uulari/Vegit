@@ -1,6 +1,7 @@
 package main;
 
 
+import sqldb.SQLDb;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Color.red;
@@ -45,12 +46,12 @@ public class BasicSwing extends JFrame {
 
     SQLDb db;
     private JButton send, exit, back, login, createAccount, createButton;
-    private JPanel panel1 = new JPanel(), panel2 = new JPanel(), panel3 = new JPanel(), panel4 = new JPanel(), contentPanel = new JPanel();
-    private CardLayout cardLayout = new CardLayout();
+    private JPanel contentPanel;
+    private CardLayout cardLayout;
     private JLabel loginun, loginpw, loginunp3, loginpwp3, header, maxtime, ingreds, people, name, preptime, ingredients, instructions, leftpicp1, leftpicp2, leftpicp3, leftpicp4, mainlogo, mainlogop2, mainlogop3, mainlogop4, vege, p3;
-    private JTextField jtime, amountofppl, vegebole, loginUsername, loginPassword, newUsername, newPassword;
+    
     private JTextPane jt, outputinstructs, outputingreds;
-    private ImageIcon image, imagemain;
+    
     
     public BasicSwing(SQLDb sqldb) throws IOException {
 
@@ -58,7 +59,8 @@ public class BasicSwing extends JFrame {
         super("Reseptigeneraattori");
         
         db = sqldb;
-                 
+        cardLayout  = new CardLayout();
+        contentPanel  = new JPanel();                 
         contentPanel.setLayout(cardLayout);
         
         FrontPanel frontpanel = new FrontPanel();        
@@ -97,6 +99,7 @@ public class BasicSwing extends JFrame {
         back.addActionListener(al);
         login.addActionListener(al);
         createAccount.addActionListener(al);
+        createButton.addActionListener(al);
        
 
     }
@@ -113,13 +116,17 @@ public class BasicSwing extends JFrame {
             } else if (src.equals(login)) {               
                 cardLayout.show(contentPanel, "searchpanel");
             } else if (src.equals(createAccount)) {
-                cardLayout.show(contentPanel, "creationpanel");
+                cardLayout.show(contentPanel, "creationpanel");                
+            } else if (src.equals(createButton)) {               
+                cardLayout.first(contentPanel);                
             } else if (src.equals(back)) {                
                 cardLayout.first(contentPanel);
             } else if (src.equals(exit)) {
                 System.exit(0);
 
             }
+            
+            
 
         }
     }

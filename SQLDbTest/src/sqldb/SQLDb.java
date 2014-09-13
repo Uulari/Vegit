@@ -1,4 +1,4 @@
-package main;
+package sqldb;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +17,8 @@ import java.util.regex.Pattern;
  * @author FunkyO
  */
 public class SQLDb {
-
+    
+    DBConnection con;
     String hakusyote;
     int amountofppl;
     int time;
@@ -32,20 +33,16 @@ public class SQLDb {
         this.tiedot = new ArrayList();
         this.ingredients = new ArrayList();
         this.vege = false;
+        this.con = new DBConnection();
     }
 
     public void run() throws InstantiationException, IllegalAccessException, SQLException {
         
-
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "vegitdatabase";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "Morpheus";
-        String password = "Bambiino16";
+        
         try {
             //Initalize connection to db
-            Class.forName(driver).newInstance();
-            Connection conn = DriverManager.getConnection(url + dbName, userName, password);
+            Class.forName(con.getDriver()).newInstance();
+            Connection conn = DriverManager.getConnection(con.getUrl() + con.getDbName(), con.getUserName(), con.getPassword());
 
             // make a query, request & display results   
             parseIngredients();
@@ -160,15 +157,11 @@ public class SQLDb {
     }
     
     public void createUser(String username, String password) {
-        
-        String url = "jdbc:mysql://localhost:3306/";
-        String dbName = "vegitdatabase";
-        String driver = "com.mysql.jdbc.Driver";
-        String userName = "Morpheus";
-        String password = "Bambiino16";
-        
-         Class.forName(driver).newInstance();
-         Connection conn = DriverManager.getConnection(url + dbName, userName, password);
+         
+        try {
+                
+         Class.forName(con.getDriver()).newInstance();
+         Connection conn = DriverManager.getConnection(con.getUrl() + con.getDbName(), con.getUserName(), con.getPassword());
          
             Statement st = conn.createStatement();
             //check if db contains username
@@ -178,11 +171,12 @@ public class SQLDb {
             // creates account with given username and pw            
             if (rs1.wasNull() == true) {
                 String newUser = ("INSERT INTO users (Username, Password, Favourites) VALUES ('" + username +  "','" + password + "')");                 
-                ResultSet rs2 = st.executeQuery(newUser);
-                
+                int rs2 = st.executeUpdate(newUser);                
             }
             
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     public boolean checkUser() {

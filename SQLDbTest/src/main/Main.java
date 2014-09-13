@@ -1,6 +1,7 @@
 package main;
 
 
+import sqldb.SQLDb;
 import main.BasicSwing;
 import java.io.IOException;
 import javax.swing.JFrame;

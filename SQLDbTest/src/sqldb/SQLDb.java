@@ -27,6 +27,7 @@ public class SQLDb {
     private boolean vege;
 
     public SQLDb() {
+        
         this.hakusyote = "";
         this.time = 0;
         this.amountofppl = 0;
@@ -179,9 +180,4 @@ public class SQLDb {
         }
     }
     
-    public boolean checkUser() {
-    
-    
-    }
-
 }

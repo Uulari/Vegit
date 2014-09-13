@@ -32,6 +32,7 @@ public class FrontPanel extends Panel {
 
         ImageIcon sideimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
         ImageIcon logoimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+        ImageIcon twiit = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\icon-social-small-twitter_1.png");
 
         JLabel sidepic = new JLabel(sideimage, JLabel.CENTER);
         JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
@@ -44,8 +45,11 @@ public class FrontPanel extends Panel {
         JLabel loginpw = new JLabel("Password");
         JTextField loginUsername = new JTextField();
         JTextField loginPassword = new JTextField();
-        login = new JButton("Login");
+        login = new JButton("");
         createAccount = new JButton("Create account");
+        login.setIcon(twiit);
+        login.setBackground(Color.red);
+        login.setFont(null);
 
         //set sizes for components in panel 4
         mainlogo.setBounds(235, 40, 200, 50);

@@ -47,6 +47,10 @@ public class BasicSwing extends JFrame {
     SQLDb db;
     private JButton send, exit, back, login, createAccount, createButton;
     private JPanel contentPanel;
+    private FrontPanel frontpanel;
+    private CreateAccountPanel creationpanel;    
+    private SearchPanel searchpanel;
+    private ResultsPanel resultspanel; 
     private CardLayout cardLayout;
     private JLabel loginun, loginpw, loginunp3, loginpwp3, header, maxtime, ingreds, people, name, preptime, ingredients, instructions, leftpicp1, leftpicp2, leftpicp3, leftpicp4, mainlogo, mainlogop2, mainlogop3, mainlogop4, vege, p3;
     
@@ -63,14 +67,15 @@ public class BasicSwing extends JFrame {
         contentPanel  = new JPanel();                 
         contentPanel.setLayout(cardLayout);
         
-        FrontPanel frontpanel = new FrontPanel();        
+        frontpanel = new FrontPanel();        
         frontpanel.initComponents();
-        CreateAccountPanel creationpanel = new CreateAccountPanel();
+        creationpanel = new CreateAccountPanel();
         creationpanel.initComponents();
-        SearchPanel searchpanel = new SearchPanel();
+        searchpanel = new SearchPanel();
         searchpanel.initComponents();
-        ResultsPanel resultspanel = new ResultsPanel();
+        resultspanel = new ResultsPanel();
         resultspanel.initComponents();
+        
         
        
         contentPanel.add(frontpanel.getPanel(), "frontpanel");
@@ -140,13 +145,14 @@ public class BasicSwing extends JFrame {
             ingred.add(ingreds[i]);
         }
         
-        int strtime = Integer.parseInt(jtime.getText());
-        int peopleamount = Integer.parseInt(amountofppl.getText());
-        String isvege = vegebole.getText();
-        vegebole.setText("");
+        int strtime = Integer.parseInt(searchpanel.getTime().getText());
+        int peopleamount = Integer.parseInt(searchpanel.getAmountOfPeople().getText());
+        String isvege = searchpanel.getVege().getText();
+        
+        searchpanel.getVege().setText("");
         jt.setText("");
-        jtime.setText("");
-        amountofppl.setText("");
+        searchpanel.getTime().setText("");
+        searchpanel.getAmountOfPeople().setText("");
         
         System.out.println("Resepti:");
 

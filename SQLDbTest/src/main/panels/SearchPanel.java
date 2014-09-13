@@ -107,7 +107,4 @@ public class SearchPanel extends Panel {
         return this.time;
     }
 
-    public JTextField getVege() {
-        return this.vegebole;
-    }
 }

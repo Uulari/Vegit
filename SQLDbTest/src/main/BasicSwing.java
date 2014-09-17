@@ -74,6 +74,7 @@ public class BasicSwing extends JFrame {
         //button color and font
         //00ff62
         //Levenim MT
+        //http://apps.pixlr.com/editor/
         
         
         
@@ -135,7 +136,7 @@ public class BasicSwing extends JFrame {
             } else if (src.equals(createButton)) {               
                 cardLayout.first(contentPanel);                
             } else if (src.equals(back)) {                
-                cardLayout.first(contentPanel);
+                cardLayout.show(contentPanel, "searchpanel");
             } 
             
             

@@ -21,7 +21,7 @@ import javax.swing.JTextPane;
 public class ResultsPanel extends Panel {
     
     private JPanel panel;
-    private JButton exit, back;
+    private JButton back;
     
     public ResultsPanel() {
         panel = new JPanel();
@@ -31,8 +31,10 @@ public class ResultsPanel extends Panel {
     @Override
     public void initComponents() {
         
-        ImageIcon sideimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
-        ImageIcon logoimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+       ImageIcon sideimage = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\vehepalsta.png");
+       ImageIcon logoimage = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+       
+       ImageIcon backtosearch = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Backtosearchbtn.jpg");
          
         //initialize components for panel2
         
@@ -45,27 +47,29 @@ public class ResultsPanel extends Panel {
         JTextPane outputinstructs = new JTextPane();
         JTextPane outputingreds = new JTextPane();
                
-        exit = new JButton("Exit");
-        back = new JButton("back to search");
+        
+        back = new JButton("");
+        back.setIcon(backtosearch);
         
         //set sizes for components in panel 2
         
-        mainlogo.setBounds(235, 40, 200, 50); 
+        mainlogo.setBounds(225, 40, 200, 50); 
         sidepic.setBounds(0, 0, 45, 768);      
-        preptime.setBounds(150, 135, 150, 30);
-        ingredients.setBounds(150, 175, 100, 10);        
-        instructions.setBounds(150, 355, 100, 20);
-        outputingreds.setBounds(150, 205, 200, 140);
+        preptime.setBounds(172, 135, 150, 30);
+        ingredients.setBounds(172, 175, 100, 10);        
+        instructions.setBounds(172, 355, 100, 20);
+        outputingreds.setBounds(172, 205, 200, 140);
         outputingreds.setBackground(Color.white);
-        outputinstructs.setBounds(150, 395, 300, 250);
+        outputinstructs.setBounds(172, 395, 300, 250);
         outputinstructs.setBackground(Color.white);
-        exit.setBounds(200, 670, 60, 40);
-        back.setBounds(290, 670, 120, 40);
+        
+        back.setBounds(197, 670, 250, 40);
         
          //set borders for components in panel2          
         sidepic.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         outputingreds.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         outputinstructs.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        this.panel.setBackground(Color.white);
         
         //add components to panel2
         
@@ -79,7 +83,7 @@ public class ResultsPanel extends Panel {
         panel.add(outputingreds);
         panel.setLayout(null);
 
-        panel.add(exit);
+        
         panel.add(back);
         
     }
@@ -89,10 +93,7 @@ public class ResultsPanel extends Panel {
         return this.panel;
     }
     
-    public JButton getExit() {
-        return this.exit;
-    }
-    
+       
     public JButton getBack() {
         return this.back;
     }

@@ -1,15 +1,18 @@
 package main;
 
 
-import sqldb.SQLDb;
 import java.awt.CardLayout;
 import java.awt.Color;
 import static java.awt.Color.red;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,9 +32,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import main.panels.CreateAccountPanel;
 import main.panels.FrontPanel;
-import main.panels.Panel6;
 import main.panels.ResultsPanel;
 import main.panels.SearchPanel;
+import sqldb.SQLDb;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -45,6 +48,7 @@ import main.panels.SearchPanel;
 public class BasicSwing extends JFrame {
 
     SQLDb db;
+    private Font font;
     private JButton send, exit, back, login, createAccount, createButton;
     private JPanel contentPanel;
     private FrontPanel frontpanel;
@@ -52,7 +56,7 @@ public class BasicSwing extends JFrame {
     private SearchPanel searchpanel;
     private ResultsPanel resultspanel; 
     private CardLayout cardLayout;
-    private JLabel loginun, loginpw, loginunp3, loginpwp3, header, maxtime, ingreds, people, name, preptime, ingredients, instructions, leftpicp1, leftpicp2, leftpicp3, leftpicp4, mainlogo, mainlogop2, mainlogop3, mainlogop4, vege, p3;
+    private JLabel loginun, loginpw, loginunp3, loginpwp3, maxtime, ingreds, people, name, preptime, ingredients, instructions, leftpicp1, leftpicp2, leftpicp3, leftpicp4, mainlogo, mainlogop2, mainlogop3, mainlogop4, vege, p3;
     
     private JTextPane jt, outputinstructs, outputingreds;
     
@@ -66,6 +70,12 @@ public class BasicSwing extends JFrame {
         cardLayout  = new CardLayout();
         contentPanel  = new JPanel();                 
         contentPanel.setLayout(cardLayout);
+        
+        //button color and font
+        //00ff62
+        //Levenim MT
+        
+        
         
         frontpanel = new FrontPanel();        
         frontpanel.initComponents();
@@ -97,9 +107,9 @@ public class BasicSwing extends JFrame {
         this.createButton = creationpanel.getCreateButton();
         this.send = searchpanel.getSend();
         this.back = resultspanel.getBack();
-        this.exit = resultspanel.getExit();
         
-        exit.addActionListener(al);
+        
+        
         send.addActionListener(al);        
         back.addActionListener(al);
         login.addActionListener(al);
@@ -126,10 +136,7 @@ public class BasicSwing extends JFrame {
                 cardLayout.first(contentPanel);                
             } else if (src.equals(back)) {                
                 cardLayout.first(contentPanel);
-            } else if (src.equals(exit)) {
-                System.exit(0);
-
-            }
+            } 
             
             
 
@@ -213,4 +220,6 @@ public class BasicSwing extends JFrame {
     }
     
    
+    
+      
 }

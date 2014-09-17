@@ -31,13 +31,16 @@ public class SearchPanel extends Panel {
     @Override
     public void initComponents() {
 
-        ImageIcon sideimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\vehepalsta.png");
-        ImageIcon logoimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+        ImageIcon sideimage = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\vehepalsta.png");
+        ImageIcon logoimage = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+        
+        ImageIcon search = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Searchbtn.jpg");
 
         //initialize components for panel1
         JLabel leftpic = new JLabel(sideimage, JLabel.CENTER);
         JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
-        send = new JButton("Hae!");
+        send = new JButton("");
+        send.setIcon(search);
         JLabel people = new JLabel("Henkilömäärä");
         JLabel vege = new JLabel("Kasvisresepti?");
         JLabel maxtime = new JLabel("Valmistusaika (min)");
@@ -49,25 +52,25 @@ public class SearchPanel extends Panel {
         amountofppl = new JTextField();
 
         //set sizes for components in panel1
-        mainlogo.setBounds(235, 40, 200, 50);
+        mainlogo.setBounds(225, 40, 200, 50);
         leftpic.setBounds(0, 0, 45, 768);
-        maxtime.setBounds(140, 120, 125, 20);
-        jt.setBounds(290, 170, 100, 100);
-        ingreds.setBounds(140, 170, 80, 20);
-        people.setBounds(140, 300, 125, 20);
-        time.setBounds(290, 120, 100, 20);
-        amountofppl.setBounds(290, 300, 100, 20);
-        vege.setBounds(140, 350, 100, 20);
-        vegebole.setBounds(290, 350, 100, 20);
-        this.send.setBounds(300, 420, 80, 50);
+        maxtime.setBounds(117, 120, 125, 20);
+        jt.setBounds(267, 170, 100, 100);
+        ingreds.setBounds(117, 170, 80, 20);
+        people.setBounds(117, 300, 125, 20);
+        time.setBounds(267, 120, 100, 20);
+        amountofppl.setBounds(267, 300, 100, 20);
+        vege.setBounds(117, 350, 100, 20);
+        vegebole.setBounds(267, 350, 100, 20);
+        this.send.setBounds(242, 420, 160, 40);
 
         //set borders
         leftpic.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        time.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        jt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        vegebole.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        amountofppl.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        this.send.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        time.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        jt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        vegebole.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        amountofppl.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+//        this.send.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
         //add components to panel1
         panel.add(leftpic);
@@ -83,7 +86,7 @@ public class SearchPanel extends Panel {
         panel.add(ingreds);
         panel.add(send);
         panel.setLayout(null);
-        panel.setBackground(Color.red);
+        panel.setBackground(Color.white);
     }
 
     @Override

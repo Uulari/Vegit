@@ -6,12 +6,24 @@
 package main.panels;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
 
 /**
  *
@@ -22,45 +34,57 @@ public class FrontPanel extends Panel {
     private JPanel panel;
     private JButton login;
     private JButton createAccount;
+    private Font customFont;
 
     public FrontPanel() {
         this.panel = new JPanel();
+
     }
 
     @Override
     public void initComponents() {
+        
 
-        ImageIcon sideimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\vehepalsta.png");  
-        ImageIcon logoimage = new ImageIcon("C:\\Users\\FunkyO\\testirepo\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
-        ImageIcon twiit = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\icon-social-small-twitter_1.png");
-
+        ImageIcon sideimage = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\vehepalsta.png");
+        ImageIcon logoimage = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
+        
+        
+        
+        //button icons
+        ImageIcon createbtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Createbtn.jpg");
+        ImageIcon loginbtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Loginbtn.jpg");
+        
         JLabel sidepic = new JLabel(sideimage, JLabel.CENTER);
         JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
 
 //      set borders for for components in panel4
         sidepic.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-
+        
+        
         //initialize components for FrontPanel
         JLabel loginun = new JLabel("Username");
         JLabel loginpw = new JLabel("Password");
         JTextField loginUsername = new JTextField();
-        JTextField loginPassword = new JTextField();
+        JPasswordField loginPassword = new JPasswordField();
         login = new JButton("");
-        createAccount = new JButton("Create account");
-        login.setIcon(twiit);
+        createAccount = new JButton("");
+        createAccount.setIcon(createbtn);
+        login.setIcon(loginbtn);
         login.setBackground(Color.red);
         login.setFont(null);
 
         //set sizes for components in panel 4
-        mainlogo.setBounds(235, 40, 200, 50);
+        mainlogo.setBounds(225, 40, 200, 50);
         sidepic.setBounds(0, 0, 45, 768);
         loginun.setBounds(180, 150, 100, 20);
         loginpw.setBounds(180, 200, 100, 20);
         loginUsername.setBounds(300, 150, 150, 20);
         loginPassword.setBounds(300, 200, 150, 20);
-        login.setBounds(180, 250, 120, 30);
-        createAccount.setBounds(300, 250, 150, 30);
+        login.setBounds(162, 250, 160, 40);
+        createAccount.setBounds(322, 250, 160, 40);
 
+        //set fonts for components
+        
         //add components to panel4
         panel.add(mainlogo);
         panel.add(sidepic);
@@ -70,7 +94,7 @@ public class FrontPanel extends Panel {
         panel.add(loginPassword);
         panel.add(login);
         panel.add(createAccount);
-        panel.setBackground(Color.CYAN);
+        panel.setBackground(Color.WHITE);
         panel.setLayout(null);
 
     }
@@ -87,5 +111,6 @@ public class FrontPanel extends Panel {
     public JButton getCreateAccount() {
         return this.createAccount;
     }
+
 
 }

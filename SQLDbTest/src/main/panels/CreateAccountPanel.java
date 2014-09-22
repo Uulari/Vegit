@@ -22,6 +22,8 @@ public class CreateAccountPanel extends Panel {
 
     private JPanel panel, topPanel, bottomPanel2;
     private JButton createButton;
+    private JButton exit;
+    private JButton minimize;
     private JTextField newPassword, newUsername;
     
 
@@ -37,6 +39,9 @@ public class CreateAccountPanel extends Panel {
         
         ImageIcon createaccountbtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Createaccountbtn.jpg");
         
+        ImageIcon exitbtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Exitbtn.jpg");
+        ImageIcon minibtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\minibtn.jpg");
+        
         //initialize components for panel3
         
         JLabel sidepic = new JLabel(sideimage, JLabel.CENTER);    
@@ -45,6 +50,10 @@ public class CreateAccountPanel extends Panel {
         JLabel loginpwp3 = new JLabel("Desired password");
         topPanel = new JPanel();
         bottomPanel2 = new JPanel();
+        exit = new JButton("");
+        exit.setIcon(exitbtn);
+        minimize = new JButton("");
+        minimize.setIcon(minibtn);
         newUsername = new JTextField();
         newPassword = new JTextField();
         createButton = new JButton("");
@@ -52,10 +61,12 @@ public class CreateAccountPanel extends Panel {
 
         //set sizes for components in panel 3
         mainlogo.setBounds(225, 40, 200, 50);
-        sidepic.setBounds(0, 0, 45, 768);
+        sidepic.setBounds(5, 5, 45, 768);
         loginunp3.setBounds(160, 150, 150, 20);
         loginpwp3.setBounds(160, 200, 150, 20);
         topPanel.setBounds(160, 110, 310, 15);
+        minimize.setBounds(490, 20, 35, 35);
+        exit.setBounds(530, 20, 35, 35);
         bottomPanel2.setBounds(160, 250, 310, 15);
         newUsername.setBounds(320, 150, 150, 20);
         newPassword.setBounds(320, 200, 150, 20);
@@ -63,6 +74,7 @@ public class CreateAccountPanel extends Panel {
         
          //set borders for for components in panel3
         sidepic.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        this.panel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 5));
 
         //add components to panel3
         panel.add(mainlogo);
@@ -71,6 +83,8 @@ public class CreateAccountPanel extends Panel {
         panel.add(loginpwp3);
         panel.add(topPanel);
         panel.add(bottomPanel2);
+        panel.add(minimize);
+        panel.add(exit);
         topPanel.setBackground(Color.LIGHT_GRAY);
         bottomPanel2.setBackground(Color.LIGHT_GRAY);
         panel.add(newUsername);

@@ -25,7 +25,9 @@ public class Main {
             SQLDb sqldb = new SQLDb();
             BasicSwing bs = new BasicSwing(sqldb);
             bs.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            bs.setSize(600, 800);
+            bs.setUndecorated(true);
+           
+            bs.setSize(600, 780);
             bs.setVisible(true);
             
 //           

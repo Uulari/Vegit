@@ -22,6 +22,8 @@ public class SearchPanel extends Panel {
 
     private JPanel panel, topPanel, bottomPanel;
     private JButton send;
+    private JButton exit;
+    private JButton minimize;
     private JTextField time, vegebole, amountofppl;
 
     public SearchPanel() {
@@ -35,10 +37,17 @@ public class SearchPanel extends Panel {
         ImageIcon logoimage = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\Vegit_Logo.png");
         
         ImageIcon search = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Searchbtn.jpg");
-
+        
+        ImageIcon exitbtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Exitbtn.jpg");
+        ImageIcon minibtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\minibtn.jpg");
+        
         //initialize components for panel1
         JLabel leftpic = new JLabel(sideimage, JLabel.CENTER);
         JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
+        exit = new JButton("");
+        exit.setIcon(exitbtn);
+        minimize = new JButton("");
+        minimize.setIcon(minibtn);
         send = new JButton("");
         send.setIcon(search);
         topPanel = new JPanel();
@@ -56,7 +65,7 @@ public class SearchPanel extends Panel {
 
         //set sizes for components in panel1
         mainlogo.setBounds(225, 40, 200, 50);
-        leftpic.setBounds(0, 0, 45, 768);
+        leftpic.setBounds(5, 5, 45, 768);
         maxtime.setBounds(177, 160, 125, 20);
         jt.setBounds(327, 210, 100, 100);
         ingreds.setBounds(177, 210, 80, 20);
@@ -64,6 +73,8 @@ public class SearchPanel extends Panel {
         topPanel.setBounds(160, 110, 310, 15);
         bottomPanel.setBounds(160, 450, 310, 15);
         time.setBounds(327, 160, 100, 20);
+        minimize.setBounds(490, 20, 35, 35);
+        exit.setBounds(530, 20, 35, 35);
         amountofppl.setBounds(327, 340, 100, 20);
         vege.setBounds(177, 390, 100, 20);
         vegebole.setBounds(327, 390, 100, 20);
@@ -75,6 +86,7 @@ public class SearchPanel extends Panel {
         jt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         vegebole.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         amountofppl.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        this.panel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 5));
         
         topPanel.setBackground(Color.LIGHT_GRAY);
         bottomPanel.setBackground(Color.LIGHT_GRAY);
@@ -91,6 +103,8 @@ public class SearchPanel extends Panel {
         panel.add(time);
         panel.add(topPanel);
         panel.add(bottomPanel);
+        panel.add(minimize);
+        panel.add(exit);
         panel.add(maxtime);
         panel.add(people);
         panel.add(ingreds);

@@ -88,6 +88,7 @@ public class BasicSwing extends JFrame {
         contentPanel.add(creationpanel.getPanel(), "creationpanel");
         contentPanel.add(searchpanel.getPanel(), "searchpanel");
         contentPanel.add(resultspanel.getPanel(), "resultspanel");
+        
 
         this.setContentPane(contentPanel);
 

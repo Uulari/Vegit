@@ -34,6 +34,8 @@ public class FrontPanel extends Panel {
     private JPanel panel, topPanel, bottomPanel;
     private JButton login;
     private JButton createAccount;
+    private JButton exit;
+    private JButton minimize;
     private Font customFont;
 
     public FrontPanel() {
@@ -53,6 +55,9 @@ public class FrontPanel extends Panel {
         //button icons
         ImageIcon createbtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Createbtn.jpg");
         ImageIcon loginbtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Loginbtn.jpg");
+        ImageIcon exitbtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\Exitbtn.jpg");
+        ImageIcon minibtn = new ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\Vegit\\Vegit\\SQLDbTest\\src\\main\\images\\buttons\\minibtn.jpg");
+        
         
         JLabel sidepic = new JLabel(sideimage, JLabel.CENTER);
         JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
@@ -69,6 +74,10 @@ public class FrontPanel extends Panel {
         login = new JButton("");
         bottomPanel = new JPanel();
         topPanel = new JPanel();
+        exit = new JButton("");
+        exit.setIcon(exitbtn);
+        minimize = new JButton("");
+        minimize.setIcon(minibtn);
         createAccount = new JButton("");
         createAccount.setIcon(createbtn);
         login.setIcon(loginbtn);
@@ -77,13 +86,15 @@ public class FrontPanel extends Panel {
 
         //set sizes for components in panel 4
         mainlogo.setBounds(225, 40, 200, 50);
-        sidepic.setBounds(0, 0, 45, 768);
+        sidepic.setBounds(5, 5, 45, 768);
         loginun.setBounds(180, 150, 100, 20);
         loginpw.setBounds(180, 200, 100, 20);
         topPanel.setBounds(160, 110, 310, 15);
         bottomPanel.setBounds(160, 250, 310, 15);
         loginUsername.setBounds(300, 150, 150, 20);
         loginPassword.setBounds(300, 200, 150, 20);
+        minimize.setBounds(490, 20, 35, 35);
+        exit.setBounds(530, 20, 35, 35);
         login.setBounds(162, 300, 160, 40);
         createAccount.setBounds(322, 300, 160, 40);
 
@@ -91,6 +102,7 @@ public class FrontPanel extends Panel {
         
         topPanel.setBackground(Color.LIGHT_GRAY);
         bottomPanel.setBackground(Color.LIGHT_GRAY);
+        this.panel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 5));
         
         //add components to panel4
         panel.add(mainlogo);
@@ -100,7 +112,9 @@ public class FrontPanel extends Panel {
         panel.add(loginUsername);
         panel.add(loginPassword);
         panel.add(topPanel);
-        panel.add(bottomPanel);        
+        panel.add(bottomPanel);
+        panel.add(minimize);
+        panel.add(exit);
         panel.add(login);
         panel.add(createAccount);
         panel.setBackground(Color.WHITE);

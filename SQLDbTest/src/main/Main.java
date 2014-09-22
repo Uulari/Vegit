@@ -2,7 +2,7 @@ package main;
 
 
 import sqldb.SQLDb;
-import main.BasicSwing;
+import main.gui.BasicSwing;
 import java.io.IOException;
 import javax.swing.JFrame;
 

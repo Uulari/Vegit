@@ -20,13 +20,13 @@ import javax.swing.JTextField;
  */
 public class CreateAccountPanel extends Panel {
 
-    private JPanel panel;
+    private JPanel panel, topPanel, bottomPanel2;
     private JButton createButton;
     private JTextField newPassword, newUsername;
     
 
     public CreateAccountPanel() {
-        this.panel = new JPanel();
+        this.panel = new JPanel();        
     }
 
     @Override
@@ -43,6 +43,8 @@ public class CreateAccountPanel extends Panel {
         JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
         JLabel loginunp3 = new JLabel("Desired username");
         JLabel loginpwp3 = new JLabel("Desired password");
+        topPanel = new JPanel();
+        bottomPanel2 = new JPanel();
         newUsername = new JTextField();
         newPassword = new JTextField();
         createButton = new JButton("");
@@ -53,9 +55,11 @@ public class CreateAccountPanel extends Panel {
         sidepic.setBounds(0, 0, 45, 768);
         loginunp3.setBounds(160, 150, 150, 20);
         loginpwp3.setBounds(160, 200, 150, 20);
+        topPanel.setBounds(160, 110, 310, 15);
+        bottomPanel2.setBounds(160, 250, 310, 15);
         newUsername.setBounds(320, 150, 150, 20);
         newPassword.setBounds(320, 200, 150, 20);
-        createButton.setBounds(182, 250, 280, 40);
+        createButton.setBounds(182, 300, 280, 40);
         
          //set borders for for components in panel3
         sidepic.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
@@ -65,6 +69,10 @@ public class CreateAccountPanel extends Panel {
         panel.add(sidepic);
         panel.add(loginunp3);
         panel.add(loginpwp3);
+        panel.add(topPanel);
+        panel.add(bottomPanel2);
+        topPanel.setBackground(Color.LIGHT_GRAY);
+        bottomPanel2.setBackground(Color.LIGHT_GRAY);
         panel.add(newUsername);
         panel.add(newPassword);
         panel.add(createButton);

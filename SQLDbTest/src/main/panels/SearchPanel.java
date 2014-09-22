@@ -20,7 +20,7 @@ import javax.swing.JTextPane;
  */
 public class SearchPanel extends Panel {
 
-    private JPanel panel;
+    private JPanel panel, topPanel, bottomPanel;
     private JButton send;
     private JTextField time, vegebole, amountofppl;
 
@@ -41,6 +41,9 @@ public class SearchPanel extends Panel {
         JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
         send = new JButton("");
         send.setIcon(search);
+        topPanel = new JPanel();
+        bottomPanel = new JPanel();
+        
         JLabel people = new JLabel("Henkilömäärä");
         JLabel vege = new JLabel("Kasvisresepti?");
         JLabel maxtime = new JLabel("Valmistusaika (min)");
@@ -54,15 +57,17 @@ public class SearchPanel extends Panel {
         //set sizes for components in panel1
         mainlogo.setBounds(225, 40, 200, 50);
         leftpic.setBounds(0, 0, 45, 768);
-        maxtime.setBounds(117, 120, 125, 20);
-        jt.setBounds(267, 170, 100, 100);
-        ingreds.setBounds(117, 170, 80, 20);
-        people.setBounds(117, 300, 125, 20);
-        time.setBounds(267, 120, 100, 20);
-        amountofppl.setBounds(267, 300, 100, 20);
-        vege.setBounds(117, 350, 100, 20);
-        vegebole.setBounds(267, 350, 100, 20);
-        this.send.setBounds(242, 420, 160, 40);
+        maxtime.setBounds(177, 160, 125, 20);
+        jt.setBounds(327, 210, 100, 100);
+        ingreds.setBounds(177, 210, 80, 20);
+        people.setBounds(177, 340, 125, 20);
+        topPanel.setBounds(160, 110, 310, 15);
+        bottomPanel.setBounds(160, 450, 310, 15);
+        time.setBounds(327, 160, 100, 20);
+        amountofppl.setBounds(327, 340, 100, 20);
+        vege.setBounds(177, 390, 100, 20);
+        vegebole.setBounds(327, 390, 100, 20);
+        this.send.setBounds(242, 480, 160, 40);
 
         //set borders
         leftpic.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
@@ -70,7 +75,10 @@ public class SearchPanel extends Panel {
         jt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         vegebole.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         amountofppl.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-//        this.send.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        
+        topPanel.setBackground(Color.LIGHT_GRAY);
+        bottomPanel.setBackground(Color.LIGHT_GRAY);
+
 
         //add components to panel1
         panel.add(leftpic);
@@ -81,6 +89,8 @@ public class SearchPanel extends Panel {
         panel.add(amountofppl);
         panel.add(jt);
         panel.add(time);
+        panel.add(topPanel);
+        panel.add(bottomPanel);
         panel.add(maxtime);
         panel.add(people);
         panel.add(ingreds);

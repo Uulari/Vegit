@@ -20,7 +20,7 @@ import javax.swing.JTextPane;
  */
 public class ResultsPanel extends Panel {
     
-    private JPanel panel;
+    private JPanel panel, topPanel;    
     private JButton back;
     
     public ResultsPanel() {
@@ -46,6 +46,8 @@ public class ResultsPanel extends Panel {
         JLabel instructions = new JLabel("Valmistusohjeet: ");
         JTextPane outputinstructs = new JTextPane();
         JTextPane outputingreds = new JTextPane();
+        
+        topPanel = new JPanel();
                
         
         back = new JButton("");
@@ -58,6 +60,7 @@ public class ResultsPanel extends Panel {
         preptime.setBounds(172, 135, 150, 30);
         ingredients.setBounds(172, 175, 100, 10);        
         instructions.setBounds(172, 355, 100, 20);
+        topPanel.setBounds(160, 110, 310, 15);
         outputingreds.setBounds(172, 205, 200, 140);
         outputingreds.setBackground(Color.white);
         outputinstructs.setBounds(172, 395, 300, 250);
@@ -70,11 +73,13 @@ public class ResultsPanel extends Panel {
         outputingreds.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         outputinstructs.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         this.panel.setBackground(Color.white);
+        topPanel.setBackground(Color.LIGHT_GRAY);
         
         //add components to panel2
         
         panel.add(mainlogo);        
-        panel.add(sidepic);   
+        panel.add(sidepic); 
+        panel.add(topPanel);
         
         panel.add(preptime);
         panel.add(ingredients);

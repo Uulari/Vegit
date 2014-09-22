@@ -31,7 +31,7 @@ import javax.swing.UIManager;
  */
 public class FrontPanel extends Panel {
 
-    private JPanel panel;
+    private JPanel panel, topPanel, bottomPanel;
     private JButton login;
     private JButton createAccount;
     private Font customFont;
@@ -67,6 +67,8 @@ public class FrontPanel extends Panel {
         JTextField loginUsername = new JTextField();
         JPasswordField loginPassword = new JPasswordField();
         login = new JButton("");
+        bottomPanel = new JPanel();
+        topPanel = new JPanel();
         createAccount = new JButton("");
         createAccount.setIcon(createbtn);
         login.setIcon(loginbtn);
@@ -78,12 +80,17 @@ public class FrontPanel extends Panel {
         sidepic.setBounds(0, 0, 45, 768);
         loginun.setBounds(180, 150, 100, 20);
         loginpw.setBounds(180, 200, 100, 20);
+        topPanel.setBounds(160, 110, 310, 15);
+        bottomPanel.setBounds(160, 250, 310, 15);
         loginUsername.setBounds(300, 150, 150, 20);
         loginPassword.setBounds(300, 200, 150, 20);
-        login.setBounds(162, 250, 160, 40);
-        createAccount.setBounds(322, 250, 160, 40);
+        login.setBounds(162, 300, 160, 40);
+        createAccount.setBounds(322, 300, 160, 40);
 
         //set fonts for components
+        
+        topPanel.setBackground(Color.LIGHT_GRAY);
+        bottomPanel.setBackground(Color.LIGHT_GRAY);
         
         //add components to panel4
         panel.add(mainlogo);
@@ -92,6 +99,8 @@ public class FrontPanel extends Panel {
         panel.add(loginpw);
         panel.add(loginUsername);
         panel.add(loginPassword);
+        panel.add(topPanel);
+        panel.add(bottomPanel);        
         panel.add(login);
         panel.add(createAccount);
         panel.setBackground(Color.WHITE);

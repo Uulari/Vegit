@@ -104,6 +104,14 @@ public class CreateAccountPanel extends Panel {
         return this.createButton;
     }
     
+    public JButton getExit() {
+        return this.exit;
+    }
+    
+    public JButton getMinimize() {
+        return this.minimize;
+    }
+    
     public boolean isValidPassword(String text) {
         if (this.newPassword.getText().length() >= 6 && this.newPassword.getText().length() <= 25) {
             return true;        

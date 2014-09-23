@@ -25,6 +25,7 @@ public class SearchPanel extends Panel {
     private JButton exit;
     private JButton minimize;
     private JTextField time, vegebole, amountofppl;
+    private JTextPane ingredients;
 
     public SearchPanel() {
         this.panel = new JPanel();
@@ -58,7 +59,7 @@ public class SearchPanel extends Panel {
         JLabel maxtime = new JLabel("Valmistusaika (min)");
         JLabel ingreds = new JLabel("Ainekset (0-5)");
 
-        JTextPane jt = new JTextPane();
+        ingredients = new JTextPane();
         time = new JTextField();
         vegebole = new JTextField();
         amountofppl = new JTextField();
@@ -67,7 +68,7 @@ public class SearchPanel extends Panel {
         mainlogo.setBounds(225, 40, 200, 50);
         leftpic.setBounds(5, 5, 45, 768);
         maxtime.setBounds(177, 160, 125, 20);
-        jt.setBounds(327, 210, 100, 100);
+        ingredients.setBounds(327, 210, 100, 100);
         ingreds.setBounds(177, 210, 80, 20);
         people.setBounds(177, 340, 125, 20);
         topPanel.setBounds(160, 110, 310, 15);
@@ -83,7 +84,7 @@ public class SearchPanel extends Panel {
         //set borders
         leftpic.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         time.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-        jt.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+        ingredients.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         vegebole.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         amountofppl.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         this.panel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 5));
@@ -99,7 +100,7 @@ public class SearchPanel extends Panel {
         panel.add(vege);
         panel.add(vegebole);
         panel.add(amountofppl);
-        panel.add(jt);
+        panel.add(ingredients);
         panel.add(time);
         panel.add(topPanel);
         panel.add(bottomPanel);
@@ -132,6 +133,18 @@ public class SearchPanel extends Panel {
 
     public JTextField getTime() {
         return this.time;
+    }
+    
+    public JButton getExit() {
+        return this.exit;
+    }
+    
+    public JButton getMinimize() {
+        return this.minimize;
+    }
+    
+    public JTextPane getIngredients() {
+        return this.ingredients;
     }
 
 }

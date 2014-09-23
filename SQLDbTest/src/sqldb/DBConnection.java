@@ -20,10 +20,10 @@ public class DBConnection {
     public DBConnection() {
 
         url = "jdbc:mysql://localhost:3306/";
-        dbName = "vegitdatabase";
+        dbName = "recipedatabase";
         driver = "com.mysql.jdbc.Driver";
-        userName = "Morpheus";
-        password = "Bambiino16";
+        userName = "Uulari";
+        password = "popping";
 
     }
     

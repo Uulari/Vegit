@@ -116,8 +116,8 @@ public class SQLDb {
         return this.tiedot;
     }
 
-    public void haeAinekset(ArrayList aineet) {
-        this.ingredients = aineet;
+    public void setIngredients(ArrayList ingreds) {
+        this.ingredients = ingreds;
 
     }
 

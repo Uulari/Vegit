@@ -24,6 +24,7 @@ public class ResultsPanel extends Panel {
     private JButton back;
     private JButton exit;
     private JButton minimize;
+    private JTextPane outputinstructs, outputingreds;
     
     public ResultsPanel() {
         panel = new JPanel();
@@ -49,8 +50,8 @@ public class ResultsPanel extends Panel {
         JLabel preptime = new JLabel("Valmistusaika");
         JLabel ingredients = new JLabel("Ainekset:");
         JLabel instructions = new JLabel("Valmistusohjeet: ");
-        JTextPane outputinstructs = new JTextPane();
-        JTextPane outputingreds = new JTextPane();
+        outputinstructs = new JTextPane();
+        outputingreds = new JTextPane();
         
         topPanel = new JPanel();
         exit = new JButton("");
@@ -117,4 +118,19 @@ public class ResultsPanel extends Panel {
         return this.back;
     }
     
+    public JButton getExit() {
+        return this.exit;
+    }
+    
+    public JButton getMinimize() {
+        return this.minimize;
+    }
+    
+    public void setOutputIngreds(String text) {
+        this.outputingreds.setText(text);
+    }
+    
+    public void setOutputInstructs(String text) {
+        this.outputinstructs.setText(text);
+    }
 }

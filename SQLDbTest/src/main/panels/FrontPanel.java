@@ -134,6 +134,14 @@ public class FrontPanel extends Panel {
     public JButton getCreateAccount() {
         return this.createAccount;
     }
+    
+    public JButton getExit() {
+        return this.exit;
+    }
+    
+    public JButton getMinimize() {
+        return this.minimize;
+    }
 
 
 }

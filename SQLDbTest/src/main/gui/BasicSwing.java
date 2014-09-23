@@ -41,6 +41,10 @@ import sqldb.SQLDb;
  * and open the template in the editor.
  */
 
+//button color and font
+        //00ff62
+        //Levenim MT
+        //http://apps.pixlr.com/editor/
 /**
  *
  * @author FunkyO
@@ -49,32 +53,29 @@ public class BasicSwing extends JFrame {
 
     SQLDb db;
 
-    private Font font;
-    private JButton send, exit, back, login, createAccount, createButton;
+    
+    private JButton send, back, login, createAccount, createButton;
     private JPanel contentPanel;
     private FrontPanel frontpanel;
     private CreateAccountPanel creationpanel;
     private SearchPanel searchpanel;
     private ResultsPanel resultspanel;
     private CardLayout cardLayout;
-    private JLabel loginun, loginpw, loginunp3, loginpwp3, maxtime, ingreds, people, name, preptime, ingredients, instructions, leftpicp1, leftpicp2, leftpicp3, leftpicp4, mainlogo, mainlogop2, mainlogop3, mainlogop4, vege, p3;
-
+    private JLabel  name, preptime;
     private JTextPane jt, outputinstructs, outputingreds;
 
     public BasicSwing(SQLDb sqldb) throws IOException {
 
         //initalize sqldb object        
         super("Reseptigeneraattori");
-
+        
+        //create cardlayout
         db = sqldb;
         cardLayout = new CardLayout();
         contentPanel = new JPanel();
         contentPanel.setLayout(cardLayout);
 
-        //button color and font
-        //00ff62
-        //Levenim MT
-        //http://apps.pixlr.com/editor/
+        // create panels and initialize components
         frontpanel = new FrontPanel();
         frontpanel.initComponents();
         creationpanel = new CreateAccountPanel();
@@ -83,17 +84,19 @@ public class BasicSwing extends JFrame {
         searchpanel.initComponents();
         resultspanel = new ResultsPanel();
         resultspanel.initComponents();
-
+        
+        // add panels to contentPanel
         contentPanel.add(frontpanel.getPanel(), "frontpanel");
         contentPanel.add(creationpanel.getPanel(), "creationpanel");
         contentPanel.add(searchpanel.getPanel(), "searchpanel");
         contentPanel.add(resultspanel.getPanel(), "resultspanel");
         
-
+        
         this.setContentPane(contentPanel);
-
         cardLayout.show(contentPanel, "frontpanel");
-
+        
+        //create and configure buttonlistener
+        
         ButtonListener al = new ButtonListener();
 
         this.login = frontpanel.getLogin();
@@ -101,6 +104,8 @@ public class BasicSwing extends JFrame {
         this.createButton = creationpanel.getCreateButton();
         this.send = searchpanel.getSend();
         this.back = resultspanel.getBack();
+        
+        
 
         send.addActionListener(new ButtonListener());
         back.addActionListener(new ButtonListener());
@@ -109,7 +114,7 @@ public class BasicSwing extends JFrame {
         createButton.addActionListener(new ButtonListener());
 
     }
-
+    
     private class ButtonListener implements ActionListener {
         
     public void actionPerformed(ActionEvent e) {
@@ -125,54 +130,75 @@ public class BasicSwing extends JFrame {
                 cardLayout.first(contentPanel);
             } else if (src.equals(back)) {
                 cardLayout.show(contentPanel, "searchpanel");
+            } else if (src.equals(frontpanel.getExit()) && src.equals(creationpanel.getExit())) {
+               
             }
         }
     }
 
+    
+    
     public void runQuery() {
-
+        
+        // gets search parameters from searchpanel
+        
         ArrayList<String> ingred = new ArrayList();
-        String str = jt.getText();
+        String str = searchpanel.getIngredients().getText();
         String[] ingreds = str.split(" ");
         for (int i = 0; i < ingreds.length; i++) {
             ingred.add(ingreds[i]);
         }
-
+        
         int strtime = Integer.parseInt(searchpanel.getTime().getText());
         int peopleamount = Integer.parseInt(searchpanel.getAmountOfPeople().getText());
         String isvege = searchpanel.getVege().getText();
-
+        
+        //sets text fields as empty after search button is pressed
+        
         searchpanel.getVege().setText("");
-        jt.setText("");
+        searchpanel.getIngredients().setText("");
         searchpanel.getTime().setText("");
         searchpanel.getAmountOfPeople().setText("");
 
         System.out.println("Resepti:");
-
+        
+        //sets parameters for query
         db.timeInMins(strtime);
-        db.haeAinekset(ingred);
+        db.setIngredients(ingred);
         db.setAmountOfPeople(peopleamount);
 
         try {
+            //database run method executes query
             db.run();
+            
+            
+            
+            //gets results of query and sets into arraylist tiedot
             ArrayList<String> tiedot = db.haeTiedot();
             System.out.println(db.haeTiedot());
+            
+            //if query returns something start parsing
             if (tiedot.size() >= 0) {
                 name.setText("" + tiedot.get(1) + "");
-//                System.out.println("Nimi: " + tiedot.get(1));
-
+                System.out.println("Nimi: " + tiedot.get(1));
+                
+                //set preparationtime for resultspanel
                 preptime.setText("Valmistusaika: " + tiedot.get(0) + " min");
-//                System.out.println("Valmistusaika: " + tiedot.get(0) + " min");
-
-//                System.out.println("Ainekset: " + tiedot.get(2));
+                System.out.println("Valmistusaika: " + tiedot.get(0) + " min");
+                
+                
+                //set ingredients for resultspanel
+                System.out.println("Ainekset: " + tiedot.get(2));
                 String[] ingredientarray = parseOutputIngredients(tiedot.get(2));
                 String ainekset = "";
                 for (String item : ingredientarray) {
                     ainekset += (item + "\n");
                 }
-                outputingreds.setText(ainekset);
-
-//                System.out.println("Valmistusohjeet: \n" + tiedot.get(3));
+                resultspanel.setOutputIngreds(ainekset);
+                
+                
+                //set instructions for resultspanel
+                System.out.println("Valmistusohjeet: \n" + tiedot.get(3));
                 String[] instructionarray = parseOutputInstructions(tiedot.get(3));
                 String ohje = "";
                 for (String ins : instructionarray) {
@@ -180,7 +206,7 @@ public class BasicSwing extends JFrame {
                         ohje += (ins + "\n");
                     }
                 }
-                outputinstructs.setText(ohje);
+                resultspanel.setOutputInstructs(ohje);
 
             }
 

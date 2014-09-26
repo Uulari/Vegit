@@ -54,7 +54,7 @@ public class BasicSwing extends JFrame {
     SQLDb db;
 
     
-    private JButton send, back, login, createAccount, createButton;
+    private JButton send, back, login, createAccount, createButton, exit, close;
     private JPanel contentPanel;
     private FrontPanel frontpanel;
     private CreateAccountPanel creationpanel;
@@ -97,7 +97,7 @@ public class BasicSwing extends JFrame {
         
         //create and configure buttonlistener
         
-        ButtonListener al = new ButtonListener();
+        
 
         this.login = frontpanel.getLogin();
         this.createAccount = frontpanel.getCreateAccount();
@@ -112,6 +112,17 @@ public class BasicSwing extends JFrame {
         login.addActionListener(new ButtonListener());
         createAccount.addActionListener(new ButtonListener());
         createButton.addActionListener(new ButtonListener());
+        frontpanel.getExit().addActionListener(new ButtonListener());
+        searchpanel.getExit().addActionListener(new ButtonListener());
+        creationpanel.getExit().addActionListener(new ButtonListener());
+        resultspanel.getExit().addActionListener(new ButtonListener());
+        
+        frontpanel.getMinimize().addActionListener(new ButtonListener());
+        searchpanel.getMinimize().addActionListener(new ButtonListener());
+        creationpanel.getMinimize().addActionListener(new ButtonListener());
+        resultspanel.getMinimize().addActionListener(new ButtonListener());
+        
+        
 
     }
     
@@ -130,10 +141,15 @@ public class BasicSwing extends JFrame {
                 cardLayout.first(contentPanel);
             } else if (src.equals(back)) {
                 cardLayout.show(contentPanel, "searchpanel");
-            } else if (src.equals(frontpanel.getExit()) && src.equals(creationpanel.getExit())) {
-               
+            } else if (src.equals(frontpanel.getExit()) || src.equals(searchpanel.getExit()) || src.equals(creationpanel.getExit()) || src.equals(resultspanel.getExit())) {
+                System.exit(0);
+            } else if (src.equals(frontpanel.getMinimize()) || src.equals(searchpanel.getMinimize()) || src.equals(creationpanel.getMinimize()) || src.equals(resultspanel.getMinimize())) {
+                //set minimize for 
             }
         }
+    
+    
+    
     }
 
     

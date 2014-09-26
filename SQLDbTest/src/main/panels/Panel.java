@@ -19,4 +19,5 @@ public abstract class Panel {
     public abstract void initComponents();    
     public abstract JPanel getPanel();
     
+    
 }

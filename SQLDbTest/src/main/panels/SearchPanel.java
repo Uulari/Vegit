@@ -13,6 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.plaf.basic.BasicOptionPaneUI;
+import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
+import main.gui.BasicSwing;
 
 /**
  *
@@ -46,7 +49,7 @@ public class SearchPanel extends Panel {
         JLabel leftpic = new JLabel(sideimage, JLabel.CENTER);
         JLabel mainlogo = new JLabel(logoimage, JLabel.CENTER);
         exit = new JButton("");
-        exit.setIcon(exitbtn);
+        exit.setIcon(exitbtn);        
         minimize = new JButton("");
         minimize.setIcon(minibtn);
         send = new JButton("");
